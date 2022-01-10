@@ -3,8 +3,15 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const NotesSchema = new Schema({
-  name: {
-    title: String,
+  user:{
+
+    type: mongoose.Schema.Types.ObjectId,
+    ref:'user'
+
+  },
+
+  title: {
+    type: String,
     required: true,
   },
   description: {
@@ -14,7 +21,7 @@ const NotesSchema = new Schema({
   },
 
   tag: {
-    type: String,
+    type: String, 
     required: true,
     default: 'General'
   },
