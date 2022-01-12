@@ -4,25 +4,27 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
+import NoteState from "./context/notes/NoteState";
 
-function App() {
+const App = () => {
   return (
     <>
-      <h1>this is app</h1>
-     
-    
+      <NoteState>
+        <Router>
+          <Navbar />
+          <div className="conta">
 
-      <Router>
-        <Navbar/>
+          <Routes>
+            <Route index path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
 
-        <Routes>
-          <Route  path="/about" element={<About />} />
 
-          <Route index path="/" element={<Home />} />
-        </Routes>
-      </Router>
+          </div>
+        </Router>
+      </NoteState>
     </>
   );
-}
+};
 
 export default App;
