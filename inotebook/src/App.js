@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import About from "./components/About";
 import NoteState from "./context/notes/NoteState";
+import Alert from "./components/Alert";
 
 const App = () => {
   return (
@@ -12,7 +13,8 @@ const App = () => {
       <NoteState>
         <Router>
           <Navbar />
-          <div className="conta">
+          <Alert message="This is alert to be added"/>
+          <div className="container">
 
           <Routes>
             <Route index path="/" element={<Home />} />

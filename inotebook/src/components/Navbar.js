@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React from "react";
 import About from "./About";
 import { Link ,  useLocation} from "react-router-dom";
 
@@ -6,10 +6,7 @@ export default function Navbar() {
 
 
   let location = useLocation();
-  useEffect(() => {
-   console.log(location) ;
-
-  }, [location]);
+ 
 
 
 
