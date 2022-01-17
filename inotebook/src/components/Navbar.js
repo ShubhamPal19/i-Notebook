@@ -1,17 +1,46 @@
-import React from "react";
+import React,{useEffect,useState,useContext} from "react";
 import About from "./About";
-import { Link ,  useLocation} from "react-router-dom";
+import { Link ,  useLocation, useNavigate} from "react-router-dom";
 
+import noteContext from '../context/notes/noteContext'
 export default function Navbar() {
 
-
+//  console.log("delhili "+ NoteState);
   let location = useLocation();
- 
+  const context = useContext(noteContext);
+
+  const {loggedin,LoggedIn} = context;
+
+  const navigate = useNavigate();
+  
 
 
+   useEffect(() => {
 
+    console.log("use this effect")
+    if(!loggedin){
+      navigate("/login");
+    }
+  
+
+},[loggedin])
+  const handleLogout = ()=>{
+    
+    
+   
+    localStorage.removeItem('token');
+
+    LoggedIn(false);
+
+    console.log(  "fasdifo dsoifj")
+
+  
+
+  }
   return (
     <>
+
+
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
@@ -41,18 +70,18 @@ export default function Navbar() {
                 </Link>
               </li>
             </ul>
-            <form className="d-flex">
-              <input
-               
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button className="btn btn-outline-success" type="submit">
-                Search
-              </button>
-            </form>
+            {!localStorage.getItem('token')?
+             <div className="container">
+               <Link className=" btn btn-primary mx-1 float-right" to="/login" role="button">Login</Link>
+               <Link className=" btn btn-primary mx-1 float-right" to="/signup" role="button">Sign Up</Link>
+             </div>
+             :
+                          
+             <div className="container">
+               <Link    onClick = { handleLogout} className=" btn btn-primary mx-1 float-right" to="/" role="button">Logout</Link>
+             </div>
+            }
+              
           </div>
         </div>
       </nav>

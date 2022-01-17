@@ -7,7 +7,7 @@ export default function Noteitem(props) {
   const context = useContext(noteContext);
   const {deleteNote} =context;
 
-  const { note  } = props;
+  const { note ,updateNote } = props;
 
 
  
@@ -23,7 +23,7 @@ export default function Noteitem(props) {
           <div className="container ">
             <i className="far fa-trash-alt mx-2 flex-nowrap" onClick={()=>{deleteNote(note._id);}}></i>
 
-           <i className="far fa-edit mx-2 flex-nowrap"></i>
+           <i className="far fa-edit mx-2 flex-nowrap" onClick={()=>{updateNote(note);}}></i>
           </div>
          
         </div>
